@@ -218,17 +218,19 @@
             submitBtn.textContent = 'שולח...';
 
             // Get form data
-            const formData = {
+            const templateParams = {
                 from_name: document.getElementById('name').value,
                 id_number: document.getElementById('idNumber').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value,
-                to_email: 'bronakclinic@gmail.com'
+                message: document.getElementById('message').value
             };
 
+            // Debug: show what we're sending
+            console.log('Sending data:', templateParams);
+
             // Send email using EmailJS
-            emailjs.send('service_r7a9tp4', 'template_gpfa81w', formData)
+            emailjs.send('service_r7a9tp4', 'template_gpfa81w', templateParams)
                 .then(function(response) {
                     showMessage('ההודעה נשלחה בהצלחה! ניצור איתך קשר בהקדם.', 'success');
                     form.reset();
